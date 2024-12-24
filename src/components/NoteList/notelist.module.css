@@ -1,0 +1,52 @@
+.notesList {
+  max-height: 70vh; /* הגבלת הגובה ל-70% מהגובה של המסך */
+  overflow-y: auto; /* הוספת גלילה אנכית */
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 100px;
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.loading {
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: center;
+  margin: 20px 0;
+}
+/* html: <div class= "loader" ></div> .loadin {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  clip-path: inset(-45px);
+  box-shadow: -60px 15px, -60px 15px, -60px 15px;
+  transform: translateY(-15px);
+  animation: l19 1s infinite linear;
+}
+
+@keyframes l19 {
+  16.67% {
+    box-shadow: -60px 15px, -60px 15px, 19px 15px;
+  }
+  33.33% {
+    box-shadow: -60px 15px, 0px 15px, 19px 15px;
+  }
+  40%,
+  60% {
+    box-shadow: -19px 15px, 0px 15px, 19px 15px;
+  }
+  66.67% {
+    box-shadow: -19px 15px, 0px 15px, 60px 15px;
+  }
+  83.33% {
+    box-shadow: -19px 15px, 60px 15px, 60px 15px;
+  }
+  100% {
+    box-shadow: 60px 15px, 60px 15px, 60px 15px;
+  }
+} */

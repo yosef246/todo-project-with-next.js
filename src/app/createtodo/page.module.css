@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.logoutButton {
+  position: absolute; /* מאפשר מיקום יחסית למיכל האב */
+  top: 30px; /* מרחק מהחלק העליון */
+  right: 60px; /* מרחק מהחלק הימני */
+  background-color: #e3dede; /* צבע רקע אדום לדוגמה */
+  color: rgb(11, 6, 6); /* צבע טקסט */
+  border: none; /* הסרת המסגרת */
+  border-radius: 5px; /* עיגול הפינות */
+  padding: 10px 15px; /* ריווח פנימי */
+  font-size: 16px; /* גודל הטקסט */
+  cursor: pointer; /* שינוי סמן העכבר */
+  transition: background-color 0.3s ease; /* אפקט מעבר לצבע */
+}
+
+.logoutButton:hover {
+  background-color: #8e8687; /* שינוי צבע בריחוף */
+}
+
+.message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  margin-top: 10px;
+  animation: fade-in-out 5s ease-in-out;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
