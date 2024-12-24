@@ -22,19 +22,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
       );
     }
 
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://todo-project-ljmm3khad-yosef246s-projects.vercel.app"
-    );
-    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-    response.headers.set("Access-Control-Allow-Credentials", "true");
-
-    // טיפול בבקשות OPTIONS (לגבי CORS Preflight)
-    if (request.method === "OPTIONS") {
-      return NextResponse.json(null, { status: 200 });
-    }
-
     //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
     await conectToDB();
 

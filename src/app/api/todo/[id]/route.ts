@@ -10,7 +10,6 @@ interface IParams {
 //מציאת פוסט אחד לפי הטוקאן שלו
 export async function GET(
   request: NextRequest,
-  response: NextResponse,
   { params }: { params: IParams }
 ) {
   try {
@@ -22,19 +21,6 @@ export async function GET(
         },
         { status: 401 }
       );
-    }
-
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://todo-project-ljmm3khad-yosef246s-projects.vercel.app"
-    );
-    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-    response.headers.set("Access-Control-Allow-Credentials", "true");
-
-    // טיפול בבקשות OPTIONS (לגבי CORS Preflight)
-    if (request.method === "OPTIONS") {
-      return NextResponse.json(null, { status: 200 });
     }
 
     //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
@@ -65,7 +51,6 @@ export async function GET(
 //שינוי פוסט על ידי הטוקאן שלו
 export async function PATCH(
   request: NextRequest,
-  response: NextResponse,
   { params }: { params: IParams }
 ) {
   try {
@@ -79,24 +64,10 @@ export async function PATCH(
       );
     }
 
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://todo-project-ljmm3khad-yosef246s-projects.vercel.app"
-    );
-    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-    response.headers.set("Access-Control-Allow-Credentials", "true");
-
-    // טיפול בבקשות OPTIONS (לגבי CORS Preflight)
-    if (request.method === "OPTIONS") {
-      return NextResponse.json(null, { status: 200 });
-    }
-
-    //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
-    await conectToDB();
-
     const { id } = params; //קורא לאיידי של הפאראמס
     const data = await request.json(); //מקבל את המידע החדש
+    //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
+    await conectToDB();
     const updateTodo = await Todo.findByIdAndUpdate(id, data, { new: true }); //אומר לטודו תמצא לי לפי האיידי את הפוסט ותכניס אליו את המידע ששיניתי ותחזיר לי אותו עם המידע החדש
 
     if (!updateTodo) {
@@ -123,7 +94,6 @@ export async function PATCH(
 //מחיקת פוסט על האיידי שלו
 export async function DELETE(
   request: NextRequest,
-  response: NextResponse,
   { params }: { params: IParams }
 ) {
   try {
@@ -137,23 +107,9 @@ export async function DELETE(
       );
     }
 
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://todo-project-ljmm3khad-yosef246s-projects.vercel.app"
-    );
-    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-    response.headers.set("Access-Control-Allow-Credentials", "true");
-
-    // טיפול בבקשות OPTIONS (לגבי CORS Preflight)
-    if (request.method === "OPTIONS") {
-      return NextResponse.json(null, { status: 200 });
-    }
-
+    const { id } = params;
     //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
     await conectToDB();
-
-    const { id } = params;
     const deleteTodo = await Todo.findByIdAndDelete(id);
 
     if (!deleteTodo) {

@@ -39,24 +39,9 @@ export async function POST(request: NextRequest, response: NextResponse) {
       );
     }
 
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://todo-project-ljmm3khad-yosef246s-projects.vercel.app"
-    );
-    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-    response.headers.set("Access-Control-Allow-Credentials", "true");
-
-    // טיפול בבקשות OPTIONS (לגבי CORS Preflight)
-    if (request.method === "OPTIONS") {
-      return NextResponse.json(null, { status: 200 });
-    }
-
     const salt = await bcrypt.genSalt(10); //יוצר לי ערך רנדומלי ומוסיף לי אותו לסיסמא כדי להפוך אותה לייחודית ומאובטחת יותר
     newUser.password = await bcrypt.hash(newUser.password, salt); //ממיר לי את הקלט של הסיסמא לערך ייחודי וקבוע
 
-    //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
-    await conectToDB();
     user = await User.create(newUser); //מוסיף את היוזר החדש
 
     //יצירת טוקאן
