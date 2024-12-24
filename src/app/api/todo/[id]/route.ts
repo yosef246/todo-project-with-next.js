@@ -26,7 +26,7 @@ export async function GET(
 
     response.headers.set(
       "Access-Control-Allow-Origin",
-      "https://todo-project-2-84fm3x6dj-yosef246s-projects.vercel.app"
+      "http://localhost:3000/"
     );
     response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type");
@@ -81,7 +81,7 @@ export async function PATCH(
 
     response.headers.set(
       "Access-Control-Allow-Origin",
-      "https://todo-project-2-84fm3x6dj-yosef246s-projects.vercel.app"
+      "http://localhost:3000/"
     );
     response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type");
@@ -139,7 +139,7 @@ export async function DELETE(
 
     response.headers.set(
       "Access-Control-Allow-Origin",
-      "https://todo-project-2-84fm3x6dj-yosef246s-projects.vercel.app"
+      "http://localhost:3000/"
     );
     response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type");
