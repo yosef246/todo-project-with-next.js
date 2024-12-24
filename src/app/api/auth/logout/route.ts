@@ -3,10 +3,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest, response: NextResponse) {
-  response.headers.set(
-    "Access-Control-Allow-Origin",
-    "https://todo-project-2-84fm3x6dj-yosef246s-projects.vercel.app"
-  );
+  response.headers.set("Access-Control-Allow-Origin", "http://localhost:3000/"); // יש להכניס את הדומיין של ה-Frontend שלך
   response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
   response.headers.set("Access-Control-Allow-Headers", "Content-Type");
   response.headers.set("Access-Control-Allow-Credentials", "true");
