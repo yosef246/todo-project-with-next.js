@@ -10,6 +10,7 @@ interface IParams {
 //מציאת פוסט אחד לפי הטוקאן שלו
 export async function GET(
   request: NextRequest,
+  response: NextResponse,
   { params }: { params: IParams }
 ) {
   try {
@@ -64,6 +65,7 @@ export async function GET(
 //שינוי פוסט על ידי הטוקאן שלו
 export async function PATCH(
   request: NextRequest,
+  response: NextResponse,
   { params }: { params: IParams }
 ) {
   try {
@@ -121,6 +123,7 @@ export async function PATCH(
 //מחיקת פוסט על האיידי שלו
 export async function DELETE(
   request: NextRequest,
+  response: NextResponse,
   { params }: { params: IParams }
 ) {
   try {
