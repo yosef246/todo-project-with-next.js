@@ -11,7 +11,7 @@ interface Note {
   description: string;
 }
 
-export function NotesApp() {
+export default function NotesApp() {
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [notes, setNotes] = useState<Note[]>([]);
@@ -192,5 +192,3 @@ export function NotesApp() {
     </div>
   );
 }
-
-export default NotesApp;
