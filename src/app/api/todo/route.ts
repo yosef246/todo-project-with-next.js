@@ -18,6 +18,19 @@ export async function GET(request: NextRequest, response: NextResponse) {
       );
     }
 
+    response.headers.set(
+      "Access-Control-Allow-Origin",
+      "https://todo-project-2-84fm3x6dj-yosef246s-projects.vercel.app"
+    );
+    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+    response.headers.set("Access-Control-Allow-Credentials", "true");
+
+    // טיפול בבקשות OPTIONS (לגבי CORS Preflight)
+    if (request.method === "OPTIONS") {
+      return NextResponse.json(null, { status: 200 });
+    }
+
     //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
     await conectToDB();
     const tasks = await Todo.find({ userId: user._id }); //לוקח את היוזר אידי של הפוסט ומשווה ליוזר אידי של הטוקאן של המשתמש המחובר ומוצא אותו
@@ -59,6 +72,19 @@ export async function POST(request: NextRequest, response: NextResponse) {
         },
         { status: 400 }
       );
+    }
+
+    response.headers.set(
+      "Access-Control-Allow-Origin",
+      "https://todo-project-2-84fm3x6dj-yosef246s-projects.vercel.app"
+    );
+    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+    response.headers.set("Access-Control-Allow-Credentials", "true");
+
+    // טיפול בבקשות OPTIONS (לגבי CORS Preflight)
+    if (request.method === "OPTIONS") {
+      return NextResponse.json(null, { status: 200 });
     }
 
     //מתחבר למסד נתונים שלי לאחר כל בקשה כיון שאנחנו בסביבה של סרברלאס
