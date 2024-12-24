@@ -41,7 +41,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
     response.headers.set(
       "Access-Control-Allow-Origin",
-      "http://localhost:3000/"
+      "https://todo-project-ljmm3khad-yosef246s-projects.vercel.app"
     );
     response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type");
