@@ -1,4 +1,4 @@
-import { applyCors } from "@/app/auth/corse/page";
+import applyCors from "@/app/auth/corse/page";
 import { checkauthorisation } from "@/utils/checkAuthorisation";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
