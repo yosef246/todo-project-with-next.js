@@ -6,8 +6,15 @@ import { loginValidation } from "@/validations/user";
 import { NextRequest, NextResponse } from "next/server";
 import { generateUserToken } from "@/utils/token";
 import { cookies } from "next/headers";
+import { applyCors } from "@/app/auth/corse/route";
 
 export async function POST(request: NextRequest, response: NextResponse) {
+  const corse = NextResponse.json(null, { status: 200 });
+  applyCors(corse);
+  if (request.method === "OPTIONS") {
+    return response; // החזרת תשובה ל-preflight
+  }
+
   try {
     const credentials: ILogin = await request.json();
 
