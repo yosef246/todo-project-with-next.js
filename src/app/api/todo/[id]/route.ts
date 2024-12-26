@@ -1,4 +1,4 @@
-import { applyCors } from "@/app/auth/corse/route";
+import { applyCors } from "@/app/auth/corse/page";
 import Todo from "@/models/todo";
 import { checkauthorisation } from "@/utils/checkAuthorisation";
 import { conectToDB } from "@/utils/database";

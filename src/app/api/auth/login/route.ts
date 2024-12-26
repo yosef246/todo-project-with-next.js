@@ -6,7 +6,7 @@ import { loginValidation } from "@/validations/user";
 import { NextRequest, NextResponse } from "next/server";
 import { generateUserToken } from "@/utils/token";
 import { cookies } from "next/headers";
-import { applyCors } from "@/app/auth/corse/route";
+import { applyCors } from "@/app/auth/corse/page";
 
 export async function POST(request: NextRequest, response: NextResponse) {
   const corse = NextResponse.json(null, { status: 200 });
