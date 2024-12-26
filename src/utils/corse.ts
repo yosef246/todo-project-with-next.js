@@ -5,7 +5,13 @@ export function applyCors(response: NextResponse): void {
     "Access-Control-Allow-Origin",
     "https://todo-project-iitkjxxl0-yosef246s-projects.vercel.app"
   );
-  response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  response.headers.set(
+    "Access-Control-Allow-Methods",
+    "POST, OPTIONS, GET, PUT, DELETE"
+  );
+  response.headers.set(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization"
+  );
   response.headers.set("Access-Control-Allow-Credentials", "true");
 }
