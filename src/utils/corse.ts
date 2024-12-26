@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 
-export function applyCors(response: NextResponse): void {
-  response.headers.set(
-    "Access-Control-Allow-Origin",
-    "https://todo-project-iitkjxxl0-yosef246s-projects.vercel.app"
-  );
-  response.headers.set(
-    "Access-Control-Allow-Methods",
-    "POST, OPTIONS, GET, PUT, DELETE"
-  );
-  response.headers.set(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization"
-  );
-  response.headers.set("Access-Control-Allow-Credentials", "true");
+export default function applyCors(response: NextResponse): void {
+  const allowedOrigins = [
+    "https://todo-project-7qfq-6m9713wgs-yosef246s-projects.vercel.app", // הכתובת החיצונית
+    // הוספה של כתובת אחרת אם צריך
+  ];
+
+  const origin = response.headers.get("Origin");
+
+  if (allowedOrigins.includes(origin || "")) {
+    response.headers.set("Access-Control-Allow-Origin", origin || "*");
+    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+    response.headers.set("Access-Control-Allow-Credentials", "true");
+  }
 }

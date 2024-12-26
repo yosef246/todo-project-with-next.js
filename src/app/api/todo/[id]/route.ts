@@ -1,4 +1,4 @@
-import { applyCors } from "@/utils/corse";
+import applyCors from "@/utils/corse";
 import Todo from "@/models/todo";
 import { checkauthorisation } from "@/utils/checkAuthorisation";
 import { conectToDB } from "@/utils/database";
