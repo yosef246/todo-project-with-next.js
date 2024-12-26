@@ -1,4 +1,4 @@
-import applyCors from "@/app/auth/corse/page";
+import { applyCors } from "@/app/auth/corse/page";
 import Todo from "@/models/todo";
 import { checkauthorisation } from "@/utils/checkAuthorisation";
 import { conectToDB } from "@/utils/database";
@@ -24,6 +24,7 @@ export async function GET(
 
   // החלת CORS על תשובת POST
   applyCors(response);
+
   try {
     const user = checkauthorisation();
     if (!user) {
@@ -76,6 +77,7 @@ export async function PATCH(
 
   // החלת CORS על תשובת POST
   applyCors(response);
+
   try {
     const user = checkauthorisation();
     if (!user) {
@@ -130,6 +132,7 @@ export async function DELETE(
 
   // החלת CORS על תשובת POST
   applyCors(response);
+
   try {
     const user = checkauthorisation();
     if (!user) {

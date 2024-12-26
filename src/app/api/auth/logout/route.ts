@@ -1,4 +1,4 @@
-import applyCors from "@/app/auth/corse/page";
+import { applyCors } from "@/app/auth/corse/page";
 import { checkauthorisation } from "@/utils/checkAuthorisation";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
@@ -14,6 +14,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
   // החלת CORS על תשובת POST
   applyCors(response);
+
   const user = checkauthorisation();
   if (!user) {
     return NextResponse.json(

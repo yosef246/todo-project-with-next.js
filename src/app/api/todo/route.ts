@@ -1,4 +1,4 @@
-import applyCors from "@/app/auth/corse/page";
+import { applyCors } from "@/app/auth/corse/page";
 import { IToDo } from "@/interfaces/todo";
 import Todo from "@/models/todo";
 import { checkauthorisation } from "@/utils/checkAuthorisation";
@@ -18,6 +18,7 @@ export async function GET(request: NextRequest, response: NextResponse) {
 
   // החלת CORS על תשובת POST
   applyCors(response);
+
   try {
     const user = checkauthorisation();
     if (!user) {
@@ -57,6 +58,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
   // החלת CORS על תשובת POST
   applyCors(response);
+
   try {
     //בודק האם המשתמש מחובר עי זה שאני בודק אם יש לו טוקאן
     const user = checkauthorisation();
