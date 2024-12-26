@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { generateUserToken } from "@/utils/token";
 import { cookies } from "next/headers";
-import { applyCors } from "@/app/auth/corse/page";
+import { applyCors } from "@/utils/corse";
 
 export async function POST(request: NextRequest, response: NextResponse) {
   const corse = NextResponse.json(null, { status: 200 });
