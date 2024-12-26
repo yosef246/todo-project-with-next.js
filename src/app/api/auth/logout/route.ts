@@ -5,10 +5,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest, response: NextResponse) {
   const corse = NextResponse.json(null, { status: 200 });
-  applyCors(corse);
+
+  // טיפול בבקשת OPTIONS (Preflight)
   if (request.method === "OPTIONS") {
-    return response; // החזרת תשובה ל-preflight
+    applyCors(corse); // החלת CORS על תשובת OPTIONS
+    return response; // מחזיר תשובה עבור ה-preflight
   }
+
+  // החלת CORS על תשובת POST
+  applyCors(response);
   const user = checkauthorisation();
   if (!user) {
     return NextResponse.json(

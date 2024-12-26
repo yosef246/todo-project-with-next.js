@@ -9,10 +9,15 @@ import { NextRequest, NextResponse } from "next/server";
 //מציאת כל הפוסטים של משתמש מסויים
 export async function GET(request: NextRequest, response: NextResponse) {
   const corse = NextResponse.json(null, { status: 200 });
-  applyCors(corse);
+
+  // טיפול בבקשת OPTIONS (Preflight)
   if (request.method === "OPTIONS") {
-    return response; // החזרת תשובה ל-preflight
+    applyCors(corse); // החלת CORS על תשובת OPTIONS
+    return response; // מחזיר תשובה עבור ה-preflight
   }
+
+  // החלת CORS על תשובת POST
+  applyCors(response);
   try {
     const user = checkauthorisation();
     if (!user) {
@@ -43,10 +48,15 @@ export async function GET(request: NextRequest, response: NextResponse) {
 //העלאת פוסט חדש על ידי המשתמש שמחובר
 export async function POST(request: NextRequest, response: NextResponse) {
   const corse = NextResponse.json(null, { status: 200 });
-  applyCors(corse);
+
+  // טיפול בבקשת OPTIONS (Preflight)
   if (request.method === "OPTIONS") {
-    return response; // החזרת תשובה ל-preflight
+    applyCors(corse); // החלת CORS על תשובת OPTIONS
+    return response; // מחזיר תשובה עבור ה-preflight
   }
+
+  // החלת CORS על תשובת POST
+  applyCors(response);
   try {
     //בודק האם המשתמש מחובר עי זה שאני בודק אם יש לו טוקאן
     const user = checkauthorisation();
