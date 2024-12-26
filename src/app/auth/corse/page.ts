@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export default function applyCors(response: NextResponse): void {
+export function applyCors(response: NextResponse): void {
   response.headers.set(
     "Access-Control-Allow-Origin",
     "https://todo-project-iitkjxxl0-yosef246s-projects.vercel.app"
