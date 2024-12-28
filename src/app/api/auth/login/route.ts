@@ -14,7 +14,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
   // טיפול בבקשת OPTIONS (Preflight)
   if (request.method === "OPTIONS") {
     applyCors(corse); // החלת CORS על תשובת OPTIONS
-    return response; // מחזיר תשובה עבור ה-preflight
+    return corse; // מחזיר תשובה עבור ה-preflight
   }
 
   // החלת CORS על תשובת POST
