@@ -1,4 +1,3 @@
-import applyCors from "@/utils/corse";
 import { IToDo } from "@/interfaces/todo";
 import Todo from "@/models/todo";
 import { checkauthorisation } from "@/utils/checkAuthorisation";

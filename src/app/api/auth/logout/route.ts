@@ -1,4 +1,3 @@
-import applyCors from "@/utils/corse";
 import { checkauthorisation } from "@/utils/checkAuthorisation";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";

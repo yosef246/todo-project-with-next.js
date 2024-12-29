@@ -6,7 +6,6 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { generateUserToken } from "@/utils/token";
 import { cookies } from "next/headers";
-import applyCors from "@/utils/corse";
 
 export async function POST(request: NextRequest, response: NextResponse) {
   try {

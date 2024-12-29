@@ -31,7 +31,7 @@ export default function NoteForm({
     async function checkAuth() {
       setIsLoadingAuth(true);
       try {
-        const response = await fetch("http://localhost:3000/auth/checktoken", {
+        const response = await fetch("/auth/checktoken", {
           method: "GET",
           credentials: "include", // מאפשר שליחת קוקיז לשרת
         });
