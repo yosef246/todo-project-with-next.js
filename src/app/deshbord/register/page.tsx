@@ -24,25 +24,33 @@ export default function Signup() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/api/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/register`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    const data = await response.json();
-    if (response.ok) {
-      setMessage(data.message || "Registration successful!");
-      router.push("/deshbord/login");
-    } else {
-      setMessage(data.message || "Something went wrong.");
+      const data = await response.json();
+      if (response.ok) {
+        setMessage(data.message || "Registration successful!");
+        router.push("/deshbord/login");
+      } else {
+        setMessage(data.message || "Something went wrong.");
+      }
+
+      setFormatData({
+        username: "",
+        email: "",
+        password: "",
+      });
+    } catch (error) {
+      console.error("An error occurred:", error);
+      setMessage("Failed to connect to the server. Please try again later.");
     }
-
-    setFormatData({
-      username: "",
-      email: "",
-      password: "",
-    });
   }
 
   //מקציב 3 שניות להודעה
