@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export default function applyCors(response: NextResponse): void {
   const allowedOrigins = [
-    "https://todo-project-45nf-9tud6yuhd-yosef246s-projects.vercel.app", // פרויקט פרודקשן
+    "https://todo-project-45nf-9tud6yuhd-yosef246s-projects.vercel.app/deshbord/login", // פרויקט פרודקשן
     "http://localhost:3000", // סביבת פיתוח
   ];
 
