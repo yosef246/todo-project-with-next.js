@@ -1,15 +1,24 @@
 import { NextResponse } from "next/server";
 
 export default function applyCors(response: NextResponse): void {
-  // רשימת כתובות מורשות
-  const allowedOrigins = [
-    "https://todo-project-ee6i-hia1w2oo5-yosef246s-projects.vercel.app", // פרודקשן
-    "http://localhost:3000", // פיתוח
-  ];
-
+  // קריאת ה-Origin מהבקשה
   const origin = response.headers.get("Origin");
 
-  if (allowedOrigins.includes(origin || "")) {
+  // קריאת הכתובת המורשית ממקור דינמי
+  const allowedOrigins = [
+    process.env.NODE_ENV === "production"
+      ? /\.vercel\.app$/ // כל כתובת של פרויקט ב-Vercel בפרודקשן
+      : "http://localhost:3000", // localhost עבור סביבת פיתוח
+  ];
+
+  // בדיקה האם ה-Origin מתאים לאחת מהכתובות המורשות
+  const isAllowed = allowedOrigins.some((allowed) =>
+    typeof allowed === "string"
+      ? origin === allowed
+      : allowed instanceof RegExp && allowed.test(origin || "")
+  );
+
+  if (isAllowed) {
     response.headers.set("Access-Control-Allow-Origin", origin || "*");
     response.headers.set(
       "Access-Control-Allow-Methods",
