@@ -23,32 +23,29 @@ export default function Signup() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
+    const API_BASE_URL =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://todo-project-xyz.vercel.app";
 
-      const data = await response.json();
-      if (response.ok) {
-        setMessage(data.message || "Login successful!");
-        router.push("/createtodo"); //אם הכל עבר בסדר והמידע קיים במערכת אז הוא מעביר אותך אל הדף המבוקש
-      } else {
-        setMessage(data.message || "Something went wrong.");
-      }
+    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-      setFormatData({
-        email: "",
-        password: "",
-      });
-    } catch (error) {
-      console.error("An error occurred:", error);
-      setMessage("Failed to connect to the server. Please try again later.");
+    const data = await response.json();
+    if (response.ok) {
+      setMessage(data.message || "Login successful!");
+      router.push("/createtodo"); //אם הכל עבר בסדר והמידע קיים במערכת אז הוא מעביר אותך אל הדף המבוקש
+    } else {
+      setMessage(data.message || "Something went wrong.");
     }
+
+    setFormatData({
+      email: "",
+      password: "",
+    });
   }
 
   //מקציב 3 שניות להודעה

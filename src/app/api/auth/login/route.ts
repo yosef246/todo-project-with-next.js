@@ -9,17 +9,6 @@ import { cookies } from "next/headers";
 import applyCors from "@/utils/corse";
 
 export async function POST(request: NextRequest, response: NextResponse) {
-  const corse = NextResponse.json(null, { status: 200 });
-
-  // טיפול בבקשת OPTIONS (Preflight)
-  if (request.method === "OPTIONS") {
-    applyCors(corse); // החלת CORS על תשובת OPTIONS
-    return corse; // מחזיר תשובה עבור ה-preflight
-  }
-
-  // החלת CORS על תשובת POST
-  applyCors(response);
-
   try {
     const credentials: ILogin = await request.json();
 

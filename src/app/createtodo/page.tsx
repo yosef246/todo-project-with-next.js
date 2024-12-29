@@ -21,6 +21,10 @@ export default function NotesApp() {
   });
 
   const router = useRouter();
+  const API_BASE_URL =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://todo-project-xyz.vercel.app";
 
   //מקציב 2 שניות להודעה = message
   useEffect(() => {
@@ -35,9 +39,7 @@ export default function NotesApp() {
     async function fetchData() {
       setLoading(true);
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/todo`
-        );
+        const response = await fetch(`${API_BASE_URL}/api/todo`);
         if (response.ok) {
           const result = await response.json();
           setNotes(result.tasks);
@@ -57,14 +59,11 @@ export default function NotesApp() {
   async function addNote() {
     if (!newNote.title.trim() || !newNote.description.trim()) return;
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/todo`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newNote),
-      }
-    );
+    const response = await fetch(`${API_BASE_URL}/api/todo`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newNote),
+    });
 
     if (response.ok) {
       const newNoteData = await response.json();
@@ -93,12 +92,9 @@ export default function NotesApp() {
   async function deleteNote(id: string) {
     setLoading(true);
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/todo/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/api/todo/${id}`, {
+        method: "DELETE",
+      });
 
       if (response.ok) {
         setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
@@ -136,14 +132,11 @@ export default function NotesApp() {
         description: updatedNote.description || existingNote.description,
       };
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/todo/${id}`,
-        {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(finalNote),
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/api/todo/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(finalNote),
+      });
 
       if (!response.ok) {
         const errorMessage = await response.json();
@@ -167,15 +160,12 @@ export default function NotesApp() {
   async function logout() {
     //מוחק למשתמש את הקוקיז רק ולא אותו עצמו וכך בעצם מנתק אותו מהמערכת
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/logout`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.ok) {
         const data = await response.json();

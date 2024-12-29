@@ -11,20 +11,8 @@ interface IParams {
 //מציאת פוסט אחד לפי הטוקאן שלו
 export async function GET(
   request: NextRequest,
-  response: NextResponse,
   { params }: { params: IParams }
 ) {
-  const corse = NextResponse.json(null, { status: 200 });
-
-  // טיפול בבקשת OPTIONS (Preflight)
-  if (request.method === "OPTIONS") {
-    applyCors(corse); // החלת CORS על תשובת OPTIONS
-    return response; // מחזיר תשובה עבור ה-preflight
-  }
-
-  // החלת CORS על תשובת POST
-  applyCors(response);
-
   try {
     const user = checkauthorisation();
     if (!user) {
@@ -64,20 +52,8 @@ export async function GET(
 //שינוי פוסט על ידי הטוקאן שלו
 export async function PATCH(
   request: NextRequest,
-  response: NextResponse,
   { params }: { params: IParams }
 ) {
-  const corse = NextResponse.json(null, { status: 200 });
-
-  // טיפול בבקשת OPTIONS (Preflight)
-  if (request.method === "OPTIONS") {
-    applyCors(corse); // החלת CORS על תשובת OPTIONS
-    return response; // מחזיר תשובה עבור ה-preflight
-  }
-
-  // החלת CORS על תשובת POST
-  applyCors(response);
-
   try {
     const user = checkauthorisation();
     if (!user) {
@@ -119,20 +95,8 @@ export async function PATCH(
 //מחיקת פוסט על האיידי שלו
 export async function DELETE(
   request: NextRequest,
-  response: NextResponse,
   { params }: { params: IParams }
 ) {
-  const corse = NextResponse.json(null, { status: 200 });
-
-  // טיפול בבקשת OPTIONS (Preflight)
-  if (request.method === "OPTIONS") {
-    applyCors(corse); // החלת CORS על תשובת OPTIONS
-    return response; // מחזיר תשובה עבור ה-preflight
-  }
-
-  // החלת CORS על תשובת POST
-  applyCors(response);
-
   try {
     const user = checkauthorisation();
     if (!user) {
