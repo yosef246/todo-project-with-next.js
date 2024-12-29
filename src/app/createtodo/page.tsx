@@ -21,10 +21,6 @@ export default function NotesApp() {
   });
 
   const router = useRouter();
-  const API_BASE_URL =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://todo-project-xyz.vercel.app";
 
   //מקציב 2 שניות להודעה = message
   useEffect(() => {
@@ -39,7 +35,7 @@ export default function NotesApp() {
     async function fetchData() {
       setLoading(true);
       try {
-        const response = await fetch(`${API_BASE_URL}/api/todo`);
+        const response = await fetch("/api/todo");
         if (response.ok) {
           const result = await response.json();
           setNotes(result.tasks);
@@ -59,7 +55,7 @@ export default function NotesApp() {
   async function addNote() {
     if (!newNote.title.trim() || !newNote.description.trim()) return;
 
-    const response = await fetch(`${API_BASE_URL}/api/todo`, {
+    const response = await fetch("/api/todo", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newNote),
@@ -92,7 +88,7 @@ export default function NotesApp() {
   async function deleteNote(id: string) {
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/todo/${id}`, {
+      const response = await fetch(`/api/todo/${id}`, {
         method: "DELETE",
       });
 
@@ -132,7 +128,7 @@ export default function NotesApp() {
         description: updatedNote.description || existingNote.description,
       };
 
-      const response = await fetch(`${API_BASE_URL}/api/todo/${id}`, {
+      const response = await fetch(`/api/todo/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(finalNote),
@@ -160,7 +156,7 @@ export default function NotesApp() {
   async function logout() {
     //מוחק למשתמש את הקוקיז רק ולא אותו עצמו וכך בעצם מנתק אותו מהמערכת
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
+      const response = await fetch("/api/auth/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

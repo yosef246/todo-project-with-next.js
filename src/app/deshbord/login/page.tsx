@@ -23,12 +23,7 @@ export default function Signup() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const API_BASE_URL =
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://todo-project-xyz.vercel.app";
-
-    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+    const response = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
