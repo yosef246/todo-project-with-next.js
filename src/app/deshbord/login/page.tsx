@@ -22,7 +22,8 @@ export default function Signup() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-
+    //כאשר אני בסביבת פיתוח אני מוסיף לכתובת http://localhost/...
+    //בסביבת פרודאקשן אני מוריד ונותן לו להבין לבד באיזה סביבה הוא נמצא וזה נקרא נתיב יחסי
     const response = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
