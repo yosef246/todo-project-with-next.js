@@ -7,10 +7,13 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
+  width: 100%; /* התאמה אוטומטית לרוחב המסך */
+  max-width: 600px; /* גבול מקסימלי למסכים גדולים */
 }
 
 .note h3 {
   color: #333;
+  font-size: 1.5rem;
 }
 
 .note p {
@@ -41,6 +44,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 .noteButtons {
   display: flex;
   gap: 10px;
@@ -61,6 +65,71 @@
 .noteButton:hover {
   background-color: #0056b3;
 }
+
+/* רספונסיביות למסכים קטנים */
+@media (max-width: 768px) {
+  .note {
+    flex-direction: column; /* משנה את כיוון התצוגה לאורכי */
+    width: 90%; /* מתאים את הרוחב ל-90% מהמסך */
+  }
+
+  .note h3 {
+    font-size: 1.3rem;
+  }
+
+  .noteTitle {
+    font-size: 1.2rem;
+  }
+
+  .noteDescription {
+    font-size: 1rem;
+  }
+
+  .inputedit {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .noteButton {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .note {
+    padding: 8px;
+    width: 95%; /* מתאים את הרוחב ל-95% מהמסך */
+  }
+
+  .note h3 {
+    font-size: 1.1rem;
+  }
+
+  .noteTitle {
+    font-size: 1rem;
+  }
+
+  .noteDescription {
+    font-size: 0.9rem;
+  }
+
+  .inputedit {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .noteButtons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .noteButton {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+}
+
 /* .deleteButton {
   padding: 5px 10px;
   background-color: #dc3545;

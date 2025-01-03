@@ -8,13 +8,14 @@
   color: #fff;
   font-family: Arial, sans-serif;
   padding: 20px;
+  text-align: center; /* ממרכז טקסט במכשירים קטנים */
 }
 
 .logoutButton {
   position: absolute; /* מאפשר מיקום יחסית למיכל האב */
-  top: 30px; /* מרחק מהחלק העליון */
-  right: 60px; /* מרחק מהחלק הימני */
-  background-color: #e3dede; /* צבע רקע אדום לדוגמה */
+  top: 20px; /* מרחק מהחלק העליון */
+  right: 20px; /* מרחק מהחלק הימני */
+  background-color: #e3dede; /* צבע רקע */
   color: rgb(11, 6, 6); /* צבע טקסט */
   border: none; /* הסרת המסגרת */
   border-radius: 5px; /* עיגול הפינות */
@@ -38,17 +39,28 @@
   animation: fade-in-out 5s ease-in-out;
 }
 
-@keyframes fade-in-out {
-  0% {
-    opacity: 0;
+/* רספונסיביות למכשירים קטנים */
+@media (max-width: 768px) {
+  .logoutButton {
+    top: 10px; /* מקטין את המרחק מהחלק העליון */
+    right: 10px; /* מקטין את המרחק מהצד הימני */
+    font-size: 14px; /* מקטין את גודל הפונט */
+    padding: 8px 12px; /* מקטין את הריווח הפנימי */
   }
-  10% {
-    opacity: 1;
+
+  .container {
+    padding: 10px; /* מקטין ריווחים חיצוניים */
   }
-  90% {
-    opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .logoutButton {
+    font-size: 12px; /* מקטין את גודל הפונט עוד יותר */
+    padding: 6px 10px; /* מקטין את הריווח הפנימי */
   }
-  100% {
-    opacity: 0;
+
+  .container {
+    text-align: center; /* ממקם תוכן במרכז */
+    padding: 5px; /* מקטין את הריווח */
   }
 }

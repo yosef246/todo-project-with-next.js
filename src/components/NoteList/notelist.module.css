@@ -9,7 +9,7 @@
   list-style: none;
   padding: 0;
   margin-top: 2rem;
-  width: 100%;
+  width: 90%;
   max-width: 400px;
 }
 
@@ -19,6 +19,32 @@
   text-align: center;
   margin: 20px 0;
 }
+
+/* רספונסיביות למסכים קטנים */
+@media (max-width: 768px) {
+  .notesList {
+    max-width: 90%; /* מכניס את רשימת ההערות לרוחב יותר רחב במסכים קטנים */
+    margin-top: 1.5rem; /* משנה את המרווח העליון */
+  }
+
+  .loading {
+    font-size: 1rem; /* מקטין את גודל הטקסט להודעת טעינה */
+    margin: 15px 0; /* משנה את המרווח של ההודעה */
+  }
+}
+
+@media (max-width: 480px) {
+  .notesList {
+    max-width: 100%; /* מאפשר לרשימה להתפשט על כל רוחב המסך */
+    margin-top: 1rem; /* משנה את המרווח העליון עוד יותר */
+  }
+
+  .loading {
+    font-size: 0.9rem; /* מקטין עוד יותר את גודל הפונט בהודעת טעינה */
+    margin: 10px 0; /* משנה את המרווח של ההודעה */
+  }
+}
+
 /* html: <div class= "loader" ></div> .loadin {
   width: 15px;
   aspect-ratio: 1;

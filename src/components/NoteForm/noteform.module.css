@@ -4,6 +4,7 @@
   gap: 1.5rem;
   width: 100%;
   max-width: 400px;
+  padding: 20px; /* רווח פנימי למראה מסודר במכשירים קטנים */
 }
 
 .title {
@@ -52,4 +53,42 @@
 
 .addButton:active {
   transform: scale(0.95);
+}
+
+/* רספונסיביות למסכים קטנים */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem; /* מקטין את הכותרת */
+    margin-bottom: 1.5rem; /* מקטין את המרווח התחתון */
+  }
+
+  .input {
+    font-size: 0.9rem; /* מקטין את הפונט */
+    padding: 0.6rem 0.8rem; /* מקטין את הריווח הפנימי */
+  }
+
+  .addButton {
+    font-size: 1rem; /* מקטין את הפונט בכפתור */
+    padding: 0.6rem 1.5rem; /* מקטין ריווח פנימי */
+  }
+}
+
+@media (max-width: 480px) {
+  .inputContainer {
+    padding: 10px; /* מקטין ריווחים חיצוניים */
+  }
+
+  .title {
+    font-size: 1.8rem; /* מקטין עוד יותר את הכותרת */
+  }
+
+  .input {
+    font-size: 0.8rem; /* מקטין את גודל הפונט */
+    padding: 0.5rem 0.7rem; /* מקטין את הריווח הפנימי */
+  }
+
+  .addButton {
+    font-size: 0.9rem; /* מקטין את גודל הפונט בכפתור */
+    padding: 0.5rem 1rem; /* מקטין את הריווח הפנימי */
+  }
 }
