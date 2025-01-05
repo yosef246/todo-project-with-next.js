@@ -55,6 +55,22 @@
   transform: scale(0.95);
 }
 
+@media (max-width: 480px) {
+  .input {
+    font-size: 0.8rem; /* מקטין את גודל הטקסט */
+    padding: 0.5rem 0.7rem; /* מקטין את הריווח הפנימי */
+    background: rgba(255, 255, 255, 0.2); /* מסיר את אפקט הפוקוס */
+    border: none; /* הסרת גבול */
+    outline: none; /* מסיר גבול פוקוס */
+    transition: none; /* מסיר אנימציות */
+  }
+
+  .input:focus {
+    background: rgba(255, 255, 255, 0.2); /* משאיר את הצבע הבסיסי ללא שינוי */
+    outline: none; /* מסיר כל אפקט מסגרת */
+  }
+}
+
 /* רספונסיביות למסכים קטנים */
 @media (max-width: 768px) {
   .title {

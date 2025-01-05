@@ -9,17 +9,21 @@
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: #fff;
   font-family: Arial, sans-serif;
+  padding: 20px; /* מוסיף ריווח פנימי למכשירים קטנים */
 }
 
 .title {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center; /* מוודא שמירה על מרכזיות בטלפונים */
 }
 
 .buttonGroup {
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap; /* מאפשר מעבר כפתורים לשורה הבאה */
+  justify-content: center; /* מרכז כפתורים בטלפונים */
 }
 
 .button {
@@ -44,6 +48,38 @@
   transform: scale(0.95);
 }
 
+/* רספונסיביות לטלפונים (מסכים קטנים) */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem; /* מקטין את גודל הכותרת */
+  }
+
+  .button {
+    font-size: 1rem; /* מקטין את גודל הפונט בכפתורים */
+    padding: 0.6rem 1.5rem; /* מצמצם ריווח פנימי */
+  }
+
+  .buttonGroup {
+    gap: 1rem; /* מקטין רווח בין הכפתורים */
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem; /* עוד הקטנה לכותרת */
+  }
+
+  .button {
+    font-size: 0.9rem; /* מקטין עוד את הפונט בכפתורים */
+    padding: 0.5rem 1.2rem; /* מצמצם עוד את הריווח הפנימי */
+  }
+
+  .buttonGroup {
+    gap: 0.8rem; /* מקטין רווח נוסף בין הכפתורים */
+  }
+}
+
+/* מצב כהה */
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
@@ -53,9 +89,7 @@
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
   }
-}
 
-@media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
   }
