@@ -70,15 +70,18 @@
 }
 
 .message {
-  width: 30%; /* ההודעה מתפרסת על כל הרוחב */
+  width: 90%; /* ההודעה תתפוס עד 90% מרוחב המסך */
+  max-width: 400px; /* מגבילים את הרוחב המקסימלי */
+  min-width: 200px; /* מגבילים את הרוחב המינימלי */
   background-color: #d4edda;
   color: #155724;
   padding: 10px;
   border: 1px solid #c3e6cb;
   border-radius: 5px;
-  margin-top: 10px;
+  margin: 10px auto; /* מרכז את ההודעה בצורה אופקית */
   animation: fade-in-out 5s ease-in-out;
   text-align: center;
+  box-sizing: border-box; /* מוודא שה-padding נלקח בחשבון */
 }
 
 @keyframes fade-in-out {
