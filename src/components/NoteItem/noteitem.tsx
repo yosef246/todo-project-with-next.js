@@ -48,7 +48,7 @@ export default function NoteItem({
               placeholder="Update the title..."
               className={styles.inputedit}
             />
-            <input
+            <textarea
               value={editedDescription}
               onChange={(e) => setEditedDescription(e.target.value)}
               placeholder="Update the description..."

@@ -73,8 +73,7 @@ export default function NoteForm({
         placeholder="Write a title..."
         className={styles.input}
       />
-      <input
-        type="text"
+      <textarea
         name="description"
         value={newNote.description}
         onChange={(e) =>
