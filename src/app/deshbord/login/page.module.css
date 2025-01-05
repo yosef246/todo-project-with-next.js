@@ -70,7 +70,7 @@
 }
 
 .message {
-  width: 30%; /* ההודעה מתפרסת על כל הרוחב */
+  width: 50%; /* ההודעה מתפרסת על כל הרוחב */
   background-color: #d4edda;
   color: #155724;
   padding: 10px;
