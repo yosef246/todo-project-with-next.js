@@ -1,4 +1,4 @@
-The project is about creating personal notes by connecting the user or registering a new user, the user is saved on the server by a personal token and thus can create personal notes in which he can write information and even change or delete the same information, the project is done in Next.js with a side A MongoDB server, and in addition there are token verification checks and other details that the user enters for validations.
+A responsive site that deals with creating personal comments by connecting the user or registering a new user, the user is saved on the server by a personal token and thus can create personal comments where he can write information and even change or delete the same information, the project is done in Next.js with server A MongoDB aside, plus there are token validation checks and other details that the user enters for validations.
 <h1 align="center">Hi 👋, I'm yosef palas</h1>
 <h3 align="center">i am fullstack developer</h3>
 
